@@ -1,0 +1,64 @@
+<div class="button-container">
+  <button routerLink="/reader-dashboard">Reader Dashboard</button>
+</div>
+
+<div class="search-container">
+  <h2>Have A Book</h2>
+  <input type="text" [(ngModel)]="searchText" (keyup.enter)="searchBooks()">
+  <button (click)="searchBooks()">Search</button>
+
+  <h3>Search Results</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Author</th>
+        <th>PublishedYear</th>
+        <!-- <th>Category</th> -->
+        <th>Summary</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let book of searchedBooks">
+        <td>{{ book.bookName }}</td>
+        <td>{{ book.bookAuthor }}</td>
+        <td>{{ book.bookPublishedYear }}</td>
+        <!-- <td>{{ book.Category }}</td> -->
+        <td>{{ book.bookSummary }}</td>
+        <td>
+          <button (click)="reserveBook(book)" [disabled]="book.isReserved">Reserve</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+<div class="book-list-container">
+  <h3>Book List</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Author</th>
+        <th>PublishedYear</th>
+        <!-- <th>Category</th> -->
+        <th>Summary</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let book of books">
+        <td>{{ book.bookName }}</td>
+        <td>{{ book.bookAuthor }}</td>
+        <td>{{ book.bookPublishedYear }}</td>
+        <!-- <td>{{ book.Category }}</td> -->
+        <td>{{ book.bookSummary }}</td>
+        <td>
+          <button (click)="reserveBook(book)" [disabled]="book.isReserved">Reserve</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

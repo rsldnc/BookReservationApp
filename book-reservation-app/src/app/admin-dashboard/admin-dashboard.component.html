@@ -1,0 +1,155 @@
+<h2>Welcome to Admin Dashboard!</h2>
+<div class="button-container">
+  <button routerLink="">Log Out</button>
+</div>
+<div class="admin-dashboard-container">
+  <h2>User Dashboard</h2>
+  <h3>User List</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>User ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Description</th>
+        <!-- <th>Role</th> -->
+        <th>Username</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <td>{{ user.userId }}</td>
+        <td>{{ user.userFirstName }}</td>
+        <td>{{ user.userLastName }}</td>
+        <td>{{ user.userDescription }}</td>
+        <!-- <td>{{ user.Role }}</td> -->
+        <td>{{ user.username }}</td>
+        <td>
+          <!-- <button (click)="updateUser()">Update</button> -->
+          <button (click)="deleteUser(user.userId)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>Add User</h3>
+  <form (submit)="addUser()">
+    <label for="firstName">First Name:</label>
+    <input type="text" id="firstName" [(ngModel)]="newUser.userFirstName" [ngModelOptions]="{standalone: true}"  required>
+
+    <label for="lastName">Last Name:</label>
+    <input type="text" id="lastName" [(ngModel)]="newUser.userLastName" [ngModelOptions]="{standalone: true}"  required>
+
+    <label for="description">Description:</label>
+    <input type="text" id="description" [(ngModel)]="newUser.userDescription" [ngModelOptions]="{standalone: true}"  required>
+
+    <label for="role">Role:</label>
+    <select id="role" [(ngModel)]="newUser.Role" [ngModelOptions]="{standalone: true}" required>
+      <option [ngValue]="RoleType.Reader">Reader</option>
+      <option [ngValue]="RoleType.Admin">Admin</option>
+    </select>
+
+    <label for="username">Username:</label>
+    <input type="text" id="username" [(ngModel)]="newUser.username" [ngModelOptions]="{standalone: true}"  required>
+
+    <label for="password">Password:</label>
+    <input type="text" id="password" [(ngModel)]="newUser.password" [ngModelOptions]="{standalone: true}"  required>
+
+    <button type="submit">Add User</button>
+  </form>
+
+  <h3>Update User</h3>
+  <form (submit)="updateUser()">
+    
+    <label for="userId">User ID:</label>
+    <input type="number" id="userId" [(ngModel)]="existingUser.userId" [ngModelOptions]="{standalone: true}" required>
+  
+    <label for="firstName">First Name:</label>
+    <input type="text" id="firstName" [(ngModel)]="existingUser.userFirstName" [ngModelOptions]="{standalone: true}" required>
+
+    <label for="lastName">Last Name:</label>
+    <input type="text" id="lastName" [(ngModel)]="existingUser.userLastName" [ngModelOptions]="{standalone: true}"  required>
+
+    <label for="description">Description:</label>
+    <input type="text" id="description" [(ngModel)]="existingUser.userDescription" [ngModelOptions]="{standalone: true}"  required>
+
+    <button type="submit">Update User</button>
+  </form>
+</div>
+
+<div class="admin-dashboard-container">
+  <h2>Book Dashboard</h2>
+  <h3>Book List</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Book ID</th>
+        <th>Name</th>
+        <th>Author</th>
+        <th>PublishedYear</th>
+        <!-- <th>Category</th> -->
+        <th>Summary</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let book of books">
+        <td>{{ book.bookId }}</td>
+        <td>{{ book.bookName }}</td>
+        <td>{{ book.bookAuthor }}</td>
+        <td>{{ book.bookPublishedYear }}</td>
+        <!-- <td>{{ book.Category }}</td> -->
+        <td>{{ book.bookSummary }}</td>
+        <td>
+          <!-- <button (click)="updateBook()">Update</button> -->
+          <button (click)="deleteBook(book.bookId)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>Add Book</h3>
+  <form (submit)="addBook()">
+    <label for="name">Name:</label>
+    <input type="text" id="name" [(ngModel)]="newBook.bookName" [ngModelOptions]="{standalone: true}"  required>
+
+    <label for="author">Author:</label>
+    <input type="text" id="author" [(ngModel)]="newBook.bookAuthor" [ngModelOptions]="{standalone: true}" required>
+
+    <label for="publishedYear">Published Year:</label>
+    <input type="number" id="publishedYear" [(ngModel)]="newBook.bookPublishedYear" [ngModelOptions]="{standalone: true}" required>
+
+    <label for="category">Category:</label>
+    <input type="text" id="category" [(ngModel)]="newBook.Category" [ngModelOptions]="{standalone: true}"  required>
+
+    <label for="summary">Summary:</label>
+    <input type="text" id="summary" [(ngModel)]="newBook.bookSummary" [ngModelOptions]="{standalone: true}"  required>
+
+    <button type="submit">Add Book</button>
+  </form>
+
+  <h3>Update Book</h3>
+  <form (submit)="updateBook()">
+    
+    <label for="bookId">Book ID:</label>
+    <input type="number" id="bookId" [(ngModel)]="existingBook.bookId" [ngModelOptions]="{standalone: true}"  required>
+  
+    <label for="name">Name:</label>
+    <input type="text" id="name" [(ngModel)]="existingBook.bookName" [ngModelOptions]="{standalone: true}"  required>
+
+    <label for="author">Author:</label>
+    <input type="text" id="author" [(ngModel)]="existingBook.bookAuthor" [ngModelOptions]="{standalone: true}"  required>
+
+    <label for="publishedYear">Published Year:</label>
+    <input type="number" id="publishedYear" [(ngModel)]="existingBook.bookPublishedYear" [ngModelOptions]="{standalone: true}" required>
+
+    <label for="category">Category:</label>
+    <input type="text" id="category" [(ngModel)]="existingBook.Category" [ngModelOptions]="{standalone: true}"  required>
+
+    <label for="summary">Summary:</label>
+    <input type="text" id="summary" [(ngModel)]="existingBook.bookSummary" [ngModelOptions]="{standalone: true}"  required>
+
+    <button type="submit">Update Book</button>
+  </form>
+</div>

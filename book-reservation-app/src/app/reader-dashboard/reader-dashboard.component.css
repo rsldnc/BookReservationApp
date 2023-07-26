@@ -1,0 +1,30 @@
+/* Stil düzenlemeleri */
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.button-container {
+  text-align: center;
+}
+
+.button-container button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.button-container button:hover {
+  background-color: #0056b3;
+}
+
+/* Router Outlet için alan ayarı */
+router-outlet {
+  display: block;
+  margin-top: 20px;
+}

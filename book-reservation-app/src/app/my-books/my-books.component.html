@@ -1,0 +1,32 @@
+<h2>My Books</h2>
+<div class="button-container">
+  <button routerLink="/reader-dashboard">Reader Dashboard</button>
+</div>
+<router-outlet></router-outlet>
+<div class="reserved-books-container">
+  <h3>My Reserved Books</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Author</th>
+        <th>PublishedYear</th>
+        <!-- <th>Category</th> -->
+        <th>Summary</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let book of reservedBooks">
+        <td>{{ book.bookName }}</td>
+        <td>{{ book.bookAuthor }}</td>
+        <td>{{ book.bookPublishedYear }}</td>
+        <!-- <td>{{ book.Category }}</td> -->
+        <td>{{ book.bookSummary }}</td>
+        <td>
+          <button (click)="dropBook(book.bookId)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
